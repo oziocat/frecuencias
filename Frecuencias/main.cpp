@@ -10,10 +10,12 @@
  *
  * Created on 10 de agosto de 2017, 1:35
  */
+
 #include <stdlib.h>
 #include <boost/regex.hpp>
 #include <string.h>
 #include <iostream>
+#include "frecuencias.h"
 
 using namespace std;
 using namespace boost;
@@ -25,11 +27,11 @@ int main() {
     boost::regex expr ("-?[0-9]+.?[0-9]+");
     boost::cmatch q;
     
+    
      do {
         cout << "Ingrese frecuencia numerica a consultar : " << "\n\n";
         cin >> input;
         
-        //(!boost::regex_match((input, q, expression)));
         if (!boost::regex_match(input, expr))
             cout << "\nDebe ser un numero !! \n";
         else
@@ -38,5 +40,10 @@ int main() {
      }while
         (!pass);
      
-     return 0;
+
+     frecuencias objFrec(input);
+     objFrec.obtieneFrec();
+     
+     
+    return 0;
 }
